@@ -17,6 +17,8 @@ int main(){
 	int opt,choice;
 	int amount;
 	char cont = 'y';
+	printf("\nOLA-DOMAIN BANK");
+	printf("\nHello User!");
 	printf("\nWhat do you want to do?");
 	printf("\n\n1.Register your account");
 	printf("\n2.Login to your account");
@@ -149,7 +151,7 @@ int main(){
 				printf("Invalid password");
 			}	
 		}
-		printf("\n\n***Thank you for banking with ADV. bank***\n\n");
+		printf("\n\n***Thank you for banking with OLA-DOMAIN. bank***\n\n");
 	}
 	
 	return 0;
