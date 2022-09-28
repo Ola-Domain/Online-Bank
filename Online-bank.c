@@ -6,13 +6,14 @@
 struct user {
 	char phone[50];
 	char ac[50];
+	char name[50];
 	char password[50];
 	float balance;
 };
 
 int main(){
 	struct user user,usr;
-	char filename[50],phone[50],password[50],phone2[50];
+	char filename[50],phone[50],password[50],phone2[50],name[50];
 	FILE *fp,*fptr;
 	int opt,choice;
 	int amount;
@@ -27,6 +28,8 @@ int main(){
 	scanf("%d",&opt);
 	if(opt == 1){
 		system("clear");
+		printf("\nEnter full name\t");
+		scanf("%s",user.name);
 		printf("\nEnter your account number:\t");
 		scanf("%s",user.ac);
 		printf("Enter your phone number:\t");
@@ -40,7 +43,10 @@ int main(){
 		if(fwrite != 0){
 			printf("Succesfully registered");
 		}
+
+		
 	}
+
 	else if(opt == 2){
 		system("clear");
 		printf("\nPhone No.:\t");
@@ -55,7 +61,7 @@ int main(){
 			if(!strcmp(password,user.password)){
 				while(cont == 'y'){
 				system("clear");
-				printf("\n\tWelcome %s",user.phone);
+				printf("\n\tWelcome back %s",user.name);
 				printf("\nPress 1 for balance inquiry");
 				printf("\nPress 2 for adding fund");
 				printf("\nPress 3 for cash withdraw");
@@ -64,7 +70,7 @@ int main(){
 				scanf("%d",&choice);
 				switch(choice){
 					case 1:
-						printf("Your current balance is Rs. %.2f",user.balance);
+						printf("Your current balance is NGN. %.2f",user.balance);
 						break;
 
 					case 2:
@@ -74,7 +80,7 @@ int main(){
 						user.balance += amount;
 						fp = fopen(phone,"w");
 						fwrite(&user,sizeof(struct user),1,fp);
-						if(fwrite !=0) printf("\n\nYou have depostied Rs.%d",amount);
+						if(fwrite !=0) printf("\n\nYou have depostied NGN.%d",amount);
 						fclose(fp);
 						break;
 
@@ -88,7 +94,7 @@ int main(){
 							user.balance -= amount;
 						fp = fopen(phone,"w");
 						fwrite(&user,sizeof(struct user),1,fp);
-						if(fwrite !=0) printf("\n\nYou have withdrawn Rs.%d",amount);
+						if(fwrite !=0) printf("\n\nYou have withdrawn NGN.%d",amount);
 						fclose(fp);
 						}
 						break;
@@ -115,7 +121,7 @@ int main(){
 								// printf("\npassword%s",usr.password);
 								// printf("\nphone%s",usr.phone);
 								// printf("\nbalance%f",usr.balance);
-									printf("Your trasfer is completed. You have trasnfered Rs.%d to %s",amount,usr.phone);
+									printf("Your trasfer is completed. You have trasnfered NGN.%d to %s",amount,usr.phone);
 									fclose(fptr);
 									user.balance -= amount;
 									strcpy(filename,user.phone);
